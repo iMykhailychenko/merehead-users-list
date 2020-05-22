@@ -1,6 +1,6 @@
 {
-  "short_name": "Blog Application",
-  "name": "This is a blog application with the ability to authorize, create / delete posts and much more.",
+  "short_name": "Merehead / Test task",
+  "name": "Merehead / Test task - users list with react, redux, thunk, axios.",
   "icons": [
     {
       "src": "favicon.ico",
