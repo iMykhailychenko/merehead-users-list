@@ -5,9 +5,9 @@ import { BrowserRouter } from 'react-router-dom';
 import store from './redux/store';
 import App from './components/root/App';
 
-// styles
+// base styles
 import './styles/styles.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 ReactDOM.render(

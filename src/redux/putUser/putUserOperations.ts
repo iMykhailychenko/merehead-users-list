@@ -2,7 +2,7 @@ import axios from 'axios';
 import { putUserStart, putUserSuccess, putUserError } from './putUserActions';
 import { Dispatch } from '../types';
 
-axios.defaults.baseURL = 'http://77.120.241.80:8911/api/';
+axios.defaults.baseURL = 'https://cors-anywhere.herokuapp.com/http://77.120.241.80:8911/api/';
 
 export const putUser = (
     dispatch: Dispatch<any>,

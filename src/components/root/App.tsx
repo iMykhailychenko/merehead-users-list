@@ -1,23 +1,23 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 // components
 import PageTemplate from '../page-template/PageTemplate';
-import NewUser from '../../pages/new-user/NewUser'
-import EditUser from '../../pages/edit-user/EditUser'
 
 // pages
-import Home from '../../pages/home/Home';
+const AsyncMain = lazy(() => import('../../pages/home/Home' /* webpackChunkName: "home-page" */));
+const AsyncNewUser = lazy(() => import('../../pages/new-user/NewUser' /* webpackChunkName: "new-user-page" */));
+const AsyncEditUser = lazy(() => import('../../pages/edit-user/EditUser' /* webpackChunkName: "edit-user-page" */));
 
-interface Props {}
-
-const App: React.FC<Props> = () => (
+const App: React.FC<{}> = () => (
     <PageTemplate>
-        <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/new-user" component={NewUser} />
-            <Route path="/edit-user/:id" component={EditUser} />
-        </Switch>
+        <Suspense fallback={<h2>Loading ...</h2>}>
+            <Switch>
+                <Route path="/" exact component={AsyncMain} />
+                <Route path="/new-user" component={AsyncNewUser} />
+                <Route path="/edit-user/:id" component={AsyncEditUser} />
+            </Switch>
+        </Suspense>
     </PageTemplate>
 );
 
