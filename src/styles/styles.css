@@ -1,0 +1,87 @@
+@charset "UTF-8";
+@import './normalize.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 10px;
+  color: #414141;
+  line-height: 1.5;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+picture,
+img {
+  display: block;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video,
+textarea {
+  vertical-align: middle;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card {
+  height: 100%;
+}
+
+.card-empty {
+  text-align: center;
+}
+
+.input-wrp {
+  position: relative;
+}
+
+.form-err {
+  position: absolute;
+  bottom: -20px;
+  left: 2px;
+  font-size: 0.8rem;
+  color: rgb(211, 78, 78);
+}
