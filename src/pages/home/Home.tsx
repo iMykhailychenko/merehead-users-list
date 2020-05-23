@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 // redux
@@ -6,19 +6,28 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getUsers } from '../../redux/getUsers/getUsersOperations';
 import IState from '../../redux/rootState';
 
-// utils
-import queryString from 'query-string';
-
 // components
 import Jumbotron from '../../components/jumbotron/Jumbotron';
 import UserCard from '../../components/user-card/UserCard';
 import Pagination from '../../components/pagination/Pagination';
 
+// utils
+import queryString from 'query-string';
+
+
 const Home: React.FC<{}> = () => {
-    // get all user
+    // get all users
     const users = useSelector((state: IState) => state.users.items);
     const dispatch = useDispatch();
-    useEffect(getUsers(dispatch), []);
+
+    // set preloader
+    const [loading, setLoading] = useState(false);
+    useEffect(() => {
+        //preloader
+        setLoading(true);
+
+        getUsers(dispatch, setLoading);
+    }, [dispatch]);
 
     // get current page
     const maxPage = useSelector((state: IState) => state.users.pagination.maxPage);
@@ -36,17 +45,22 @@ const Home: React.FC<{}> = () => {
                 <h1 className="display-4">Hello! &#128400;</h1>
                 <hr className="my-4" />
                 <p className="lead mb-4">
-                    In this page you have the ability to read / create / delete / update the users list. Technology stack
-                    for this app: react, redux, thunk, axios.
+                    In this page you have the ability to read / create / delete / update the users list. Technology
+                    stack for this app: react, redux, thunk, axios.
                 </p>
                 <Link to="/new-user" className="btn btn-primary btn-lg">
                     New user
                 </Link>
             </Jumbotron>
 
-            <UserCard users={usersPerPage} />
-
-            <Pagination page={page} />
+            {loading ? (
+                <p className="my-4 text-center">Loading ...</p>
+            ) : (
+                <>
+                    <UserCard users={usersPerPage} />
+                    <Pagination page={page} />
+                </>
+            )}
         </>
     );
 };
