@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getSingleUser } from '../../redux/getSingleUser/getSingleUserOperations';
@@ -9,15 +9,21 @@ import IState from '../../redux/rootState';
 import Jumbotron from '../../components/jumbotron/Jumbotron';
 import FormComponent from '../../components/form-component/FormComponent';
 
-interface Props {}
-
-const EditUser: React.FC<Props> = () => {
+const EditUser: React.FC<{}> = () => {
+    // get user info
     const user: IUser = useSelector((state: IState) => state.getUser.user);
     const dispatch = useDispatch();
     const params: { id: string } = useParams();
 
+    // set preloader
+    const [loading, setLoading] = useState(false);
+
     useEffect(() => {
-        getSingleUser(dispatch, params.id);
+        // set loader
+        setLoading(true);
+
+        // fetch user info
+        getSingleUser(dispatch, params.id, setLoading);
     }, [dispatch, params]);
 
     return (
@@ -33,7 +39,9 @@ const EditUser: React.FC<Props> = () => {
                 </Link>
             </Jumbotron>
 
-            {user.id ? (
+            {loading ? (
+                <p className="my-4 text-center">Loading ...</p>
+            ) : user.id ? (
                 <FormComponent
                     values={{ name: user.name, surname: user.surname, desc: user.desc }}
                     id={user.id}
