@@ -1,7 +1,6 @@
 ## Merehead / Test task
 
-``` You can open live page by folowing next link```
-### [Project web page](https://mykh-merehead.netlify.app/)
+``` You can open live page by folowing this link``` - [Project web page](https://mykh-merehead.netlify.app/)
 
 
 ## Attention!
