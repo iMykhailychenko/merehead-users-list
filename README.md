@@ -2,7 +2,6 @@
 
 ``` You can open live page by folowing this link``` - [Project web page](https://mykh-merehead.netlify.app/)
 
-
 ## Attention!
 
 This app use proxy https://cors-anywhere.herokuapp.com/ to fix CORS problem
@@ -15,7 +14,6 @@ The application on herokuapp stops after 30 minutes of inactivity. Therefore the
 - redux
 - typescript
 ```
-
 
 ## About app
 In this app you have ability to read / create / delete and update users list
